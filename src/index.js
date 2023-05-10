@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css';
+import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 
 const Red = (props) => {
     return (
@@ -20,16 +21,23 @@ const Blue = (props) => {
 
 const Main = (props) => {
     return (
+        <BrowserRouter>
         <div id='container'>
 
             <div id='navbar'>
-                {/* navigation here */}
+                <Link to='/blue'>Go to Blue</Link>
+                <Link to='/red'>Go to Red</Link>
             </div>
 
             <div id='main-section'>
-                {/* routes here */}
+                <Routes>
+                    <Route path='/blue' element={<Blue />}/>
+                    <Route path='/red' element={<Red />}/>
+                    <Route path='/' element={Red} />
+                </Routes>
             </div>
         </div>
+        </BrowserRouter>
     )
 }
 
